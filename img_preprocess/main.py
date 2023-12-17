@@ -26,7 +26,6 @@ class PreprocessImage:
             name, ext = os.path.splitext(one_img_path)
             if name[-1] == "C":
                 # means template
-                # 如果当前样本在模板范围内1-80，则生成模板图像和txt文件
                 if config.sample_dir_name < config.template_range:
                     template_img_path = os.path.join(sample_path, one_img_path)
                     template_img = cv2.imread(template_img_path)
@@ -48,7 +47,7 @@ class PreprocessImage:
 
             if os.path.isdir(img_path) or ext == ".txt" or name == "template_binary":
                 continue
-            # 读取文件
+
             config.reset_img_pre()
             config.need_resize = True
             config.need_border = True
@@ -149,9 +148,9 @@ class PreprocessImage:
 
 
 if __name__ == '__main__':
-    # original = r"J:\lsj\ChemFinal\ChemData\Final"
-    original = r"J:\lsj\ChemFinal\ChemData\Final"
-    generated = r"J:\lsj\ChemFinal\ChemData\20231217"
+
+    original = r"\your\original\samples"
+    generated = r"\generate\dir"
 
 
     begin = time.time()
@@ -160,4 +159,4 @@ if __name__ == '__main__':
 
     end = time.time()
     time_consume = end - begin
-    print('耗时：{}'.format(time_consume))
+    print('time consume：{}'.format(time_consume))
